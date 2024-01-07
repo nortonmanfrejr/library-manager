@@ -1,7 +1,6 @@
 package dev.norton.librarymanager.Model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.Hibernate;
 
 import java.time.LocalDate;
@@ -9,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "book")
-@Data
 public class Book {
 
     @Id
@@ -116,6 +114,7 @@ public class Book {
     public void setSaga(dev.norton.librarymanager.Model.Saga saga) {
         Saga = saga;
     }
+<<<<<<< HEAD
 
     public dev.norton.librarymanager.Model.Publisher getPublisher() {
         return Publisher;
@@ -124,4 +123,6 @@ public class Book {
     public void setPublisher(dev.norton.librarymanager.Model.Publisher publisher) {
         Publisher = publisher;
     }
+=======
+>>>>>>> master
 }
