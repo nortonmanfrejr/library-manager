@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "saga")
-@Data
 public class Saga {
 
     @Id
@@ -42,7 +41,7 @@ public class Saga {
         Hibernate.initialize(Books);
         return Books;
     }
-
+  
     // ------------------------------------------------------------------------------
     // Default Methods
 
