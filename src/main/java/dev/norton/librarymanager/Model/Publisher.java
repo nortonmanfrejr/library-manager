@@ -1,4 +1,4 @@
-package dev.norton.librarymanager.Models;
+package dev.norton.librarymanager.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -42,4 +42,38 @@ public class Publisher {
         return Sagas;
     }
 
+    // ------------------------------------------------------------------------------
+    // Default Methods
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public LocalDate getFundation() {
+        return Fundation;
+    }
+
+    public void setFundation(LocalDate fundation) {
+        Fundation = fundation;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String country) {
+        Country = country;
+    }
 }

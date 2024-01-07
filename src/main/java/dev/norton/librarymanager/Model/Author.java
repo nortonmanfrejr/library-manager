@@ -1,14 +1,13 @@
-package dev.norton.librarymanager.Models;
+package dev.norton.librarymanager.Model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
 import org.hibernate.Hibernate;
 
 import java.util.List;
 
 @Entity
 @Table(name = "author")
-@Data
 public class Author {
 
     @Id
@@ -32,5 +31,24 @@ public class Author {
     public List<Saga> getSagas() {
         Hibernate.initialize(Sagas);
         return Sagas;
+    }
+
+    // ------------------------------------------------------------------------------
+    // Default Methods
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 }
