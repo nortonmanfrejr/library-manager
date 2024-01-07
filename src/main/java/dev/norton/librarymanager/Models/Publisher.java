@@ -2,12 +2,13 @@ package dev.norton.librarymanager.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.Hibernate;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "publisher")
 @Data
 public class Publisher {
 
@@ -22,12 +23,23 @@ public class Publisher {
     // Contact
 
     // ------------------------------------------------------------------------------
-    // Unmapped fields
 
-    @Transient
-    List<Book> PublishedBooks;
+    @OneToMany(mappedBy = "Publisher", fetch = FetchType.LAZY)
+    private List<Book> Books;
 
-    @Transient
-    List<Saga> PublishedSaga;
+    @OneToMany(mappedBy = "Publisher", fetch = FetchType.LAZY)
+    private List<Saga> Sagas;
+
+    // ------------------------------------------------------------------------------
+    // Custom Methods
+
+    public List<Book> getBooks() {
+        Hibernate.initialize(Books);
+        return Books;
+    }
+    public List<Saga> getPublishedSaga() {
+        Hibernate.initialize(Sagas);
+        return Sagas;
+    }
 
 }

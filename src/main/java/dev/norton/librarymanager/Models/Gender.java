@@ -2,11 +2,12 @@ package dev.norton.librarymanager.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.Hibernate;
 
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "gender")
 @Data
 public class Gender {
 
@@ -17,12 +18,17 @@ public class Gender {
     private String Name;
     private String Description;
 
-    // ------------------------------------------------------------------------------
-    // Unmapped fields
     /**
      * Examples of books that fit into this genre.
      * */
-    @Transient
-    private List<Book> Examples;
+    @ManyToMany(mappedBy = "Genders")
+    private List<Book> Books;
 
+    // ------------------------------------------------------------------------------
+    // Custom Methods
+
+    public List<Book> getExamples() {
+        Hibernate.initialize(Books);
+        return Books;
+    }
 }
