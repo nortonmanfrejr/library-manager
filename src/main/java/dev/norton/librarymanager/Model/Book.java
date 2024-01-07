@@ -1,4 +1,4 @@
-package dev.norton.librarymanager.Models;
+package dev.norton.librarymanager.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "book")
-@Data
 public class Book {
 
     @Id
@@ -48,5 +47,72 @@ public class Book {
     public List<Gender> getGenders() {
         Hibernate.initialize(Genders);
         return Genders;
+    }
+
+    // ------------------------------------------------------------------------------
+    // Default Methods
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public String getSummary() {
+        return Summary;
+    }
+
+    public void setSummary(String summary) {
+        Summary = summary;
+    }
+
+    public LocalDate getPublishedIn() {
+        return PublishedIn;
+    }
+
+    public void setPublishedIn(LocalDate publishedIn) {
+        PublishedIn = publishedIn;
+    }
+
+    public int getPages() {
+        return Pages;
+    }
+
+    public void setPages(int pages) {
+        Pages = pages;
+    }
+
+    public int getTotalCopys() {
+        return TotalCopys;
+    }
+
+    public void setTotalCopys(int totalCopys) {
+        TotalCopys = totalCopys;
+    }
+
+    public dev.norton.librarymanager.Model.Author getAuthor() {
+        return Author;
+    }
+
+    public void setAuthor(dev.norton.librarymanager.Model.Author author) {
+        Author = author;
+    }
+
+    public dev.norton.librarymanager.Model.Saga getSaga() {
+        return Saga;
+    }
+
+    public void setSaga(dev.norton.librarymanager.Model.Saga saga) {
+        Saga = saga;
     }
 }
