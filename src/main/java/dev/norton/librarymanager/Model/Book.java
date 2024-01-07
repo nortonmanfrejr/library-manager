@@ -116,4 +116,12 @@ public class Book {
     public void setSaga(dev.norton.librarymanager.Model.Saga saga) {
         Saga = saga;
     }
+
+    public dev.norton.librarymanager.Model.Publisher getPublisher() {
+        return Publisher;
+    }
+
+    public void setPublisher(dev.norton.librarymanager.Model.Publisher publisher) {
+        Publisher = publisher;
+    }
 }
