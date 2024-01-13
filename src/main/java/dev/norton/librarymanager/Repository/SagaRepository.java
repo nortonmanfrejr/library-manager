@@ -1,6 +1,6 @@
 package dev.norton.librarymanager.Repository;
 
-import dev.norton.librarymanager.Model.Saga;
+import dev.norton.librarymanager.Models.Saga;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
