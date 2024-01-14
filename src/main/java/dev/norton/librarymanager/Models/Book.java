@@ -1,19 +1,21 @@
 package dev.norton.librarymanager.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.Hibernate;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
 @Table(name = "book")
-@Data
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long ID;
 
     private String Title;
@@ -43,10 +45,28 @@ public class Book {
     private List<Gender> Genders;
 
     // ------------------------------------------------------------------------------
+    // Ignored Fields
+    @JsonIgnore
+    public LocalDate DateIncludedIn;
+    @JsonIgnore
+    public LocalTime TimeInclusionIn;
+
+    @PrePersist
+    public void DefFields() {
+        DateIncludedIn = LocalDate.now();
+        TimeInclusionIn = LocalTime.now();
+    }
+
+    // ------------------------------------------------------------------------------
     // Custom Methods
 
     public List<Gender> getGenders() {
         Hibernate.initialize(Genders);
         return Genders;
     }
+
+    // ------------------------------------------------------------------------------
+
+
+
 }
