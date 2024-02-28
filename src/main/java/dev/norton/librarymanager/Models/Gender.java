@@ -24,8 +24,6 @@ public class Gender {
     @JsonIgnore
     private Long ID;
 
-
-    @NotNull
     @Column(nullable = false, length = 50)
     public String Name;
     public String Description;
@@ -90,6 +88,7 @@ public class Gender {
      * @param httpStat : Http status that will be returned if the request is successful.
      * @param msg      : Message that will be displayed when the request is returned.
      */
+
     private ResponseEntity<String> DefResponse(HttpStatus httpStat, String msg){
         return ResponseEntity
                 .status(httpStat)
@@ -101,6 +100,16 @@ public class Gender {
                                                 ? StrT.Empty
                                                 : Name
                                 )
+                        )
+                );
+    }
+
+    private ResponseEntity<String> DefResponse(String msg, String name){
+        return ResponseEntity
+                .status(HttpStatus.NOT_ACCEPTABLE)
+                .body(String
+                        .format(msg,
+                                StrT.SingleQuotStr(name)
                         )
                 );
     }
@@ -117,5 +126,11 @@ public class Gender {
         );
     }
 
+    public ResponseEntity<String> DefRequiredResponse(String FieldName){
+        return DefResponse(
+                MsgT.Required
+                , FieldName
+        );
+    }
     // ------------------------------------------------------------------------------
 }
